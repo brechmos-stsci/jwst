@@ -9,8 +9,8 @@ Welcome to JWST Data Document's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 5
-
+   :maxdepth: 3
+   :numbered:
 
 
 Indices and tables
@@ -204,6 +204,7 @@ Level 2a
 
 Level 2b
 --------
+
 
 .. _data-imaging:
 
