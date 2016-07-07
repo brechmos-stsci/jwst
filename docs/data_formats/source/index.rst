@@ -10,7 +10,7 @@ Welcome to JWST Data Document's documentation!
 Contents:
 
 .. toctree::
-    :maxdepth: 5
+    :maxdepth: 7
     :numbered:
     :glob:
 

@@ -16,14 +16,16 @@ Single Object Slitless Spectroscopy (SOSS)
 
 .. _niriss-soss-standard:
 
-* Standard
+Standard
+^^^^^^^^
 
 Corresponding data format: :ref:`SOSS Data <data-soss>`
 
 
 .. _niriss-soss-timeseries:
 
-* Time Series
+Time Series
+^^^^^^^^^^^
 
 Corresponding data format: :ref:`SOSS Timeseries Data <data-soss-ts>`
 
