@@ -16,7 +16,7 @@ Contents:
 
     instruments/*
     formats/*
-    levels/*
+..    levels/*
 
 
 ******************
