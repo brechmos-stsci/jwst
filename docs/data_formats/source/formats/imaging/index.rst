@@ -4,7 +4,7 @@ Imaging
 =======
 
 Modes used by this imaging definition: :ref:`FGS Imaging <fgs-imaging>`, :ref:`MIRI Imaging <miri-imaging>`,
-:ref:`MIRI Imaging <nircam-imaging>`, and :ref:`NIRISS Imaging <niriss-imaging>`.
+:ref:`NIRCAM Imaging <nircam-imaging>`, and :ref:`NIRISS Imaging <niriss-imaging>`.
 
 
 .. Level 1 Information
@@ -22,3 +22,7 @@ Modes used by this imaging definition: :ref:`FGS Imaging <fgs-imaging>`, :ref:`M
 Level 2b Description
 --------------------
 
+.. FITS File Format
+
+The imaging FITS file will contain an SCI, DQ and ERR HDU. Each will be 2D and with axes that represent
+spatial dimensions.
