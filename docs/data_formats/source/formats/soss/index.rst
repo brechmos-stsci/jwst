@@ -7,14 +7,7 @@ Modes used by this definition: :ref:`MIRI Low Resolution Slitless Spectroscopy <
 :ref:`NIRISS Single Object Slitless Specroscopy <niriss-soss-standard>`.
 
 
-.. Level 1 Information
-
-.. include:: /levels/level1/index.rst
-
-
-.. Level 2a Information
-
-.. include:: /levels/level2a/index.rst
+:ref:`Level 1 <level1>` and :ref:`Level 2a <level2a>` datasets are the same for all imaging modes.
 
 
 .. Level 2b Information
@@ -25,7 +18,8 @@ Level 2b Description
 .. FITS File Description
 
 The IFU dataset is a 2D dataset with axes of spatial and wavelength dimensions.  There will
-be a SCI, DQ and ERR HDU in a FITS file.  There will be multiple FITS files, one for each exposure. (??)
+be a SCI, DQ and ERR HDU in a FITS file.  There will be multiple FITS files, one for each exposure which will be
+combined in a latter step.
 
 
 Level 2C Description

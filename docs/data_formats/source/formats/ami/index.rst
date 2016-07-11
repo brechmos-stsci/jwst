@@ -5,15 +5,7 @@ Aperature Masking Interferometry
 
 Modes used by this imaging definition: :ref:`NIRISS AMI <niriss-ami>`.
 
-.. Level 1 Information
-
-.. include:: /levels/level1/index.rst
-
-
-.. Level 2a Information
-
-.. include:: /levels/level2a/index.rst
-
+:ref:`Level 1 <level1>` and :ref:`Level 2a <level2a>` datasets are the same for all imaging modes.
 
 .. Level 2b Information
 
