@@ -7,7 +7,7 @@ Modes used by this imaging definition: :ref:`FGS Imaging <fgs-imaging>`, :ref:`M
 :ref:`NIRCAM Imaging <nircam-imaging>`, and :ref:`NIRISS Imaging <niriss-imaging>`.
 
 
-:ref:`Level 1 <level1>` and :ref:`Level 2a <level2a>` datasets are the same for all imaging modes.
+:ref:`Level 1 <level1>` and :ref:`Level 2a <level2a>` datasets are the same for all imaging and spectroscopic modes.
 
 
 .. _imaging-level2b

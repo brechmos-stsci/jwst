@@ -7,7 +7,7 @@ Modes used by this definition: :ref:`MIRI Low Resolution Slitless Spectroscopy <
 :ref:`NIRISS Single Object Slitless Specroscopy <niriss-soss-standard>`.
 
 
-:ref:`Level 1 <level1>` and :ref:`Level 2a <level2a>` datasets are the same for all imaging modes.
+:ref:`Level 1 <level1>` and :ref:`Level 2a <level2a>` datasets are the same for all imaging and spectroscopic modes.
 
 
 .. Level 2b Information
@@ -31,7 +31,7 @@ TL;DR
 ^^^^^
 * 2D dataset, spatial, wavelength
 * Single SCI, DQ, ERR tuple
-* Each exposure will be in a separate FITS file (??)
+* Each exposure will be in a separate FITS file
 
 
 .. FITS File Description
