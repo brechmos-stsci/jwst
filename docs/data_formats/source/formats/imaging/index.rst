@@ -26,5 +26,5 @@ spatial dimensions.
 Level 2c Description
 --------------------
 
-The imaginge FITS file will contain an SCI, WHT and CTX set of HDUs. Each will be 2D with axes that represent the
+The imaging FITS file will contain an SCI, WHT and CTX set of HDUs. Each will be 2D with axes that represent the
 spatial dimensions and they will have the same as the FITS file in :ref:`Imaging Level 2b <imaging-level2b>`.

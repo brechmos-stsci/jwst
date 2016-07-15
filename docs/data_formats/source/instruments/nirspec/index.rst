@@ -17,8 +17,8 @@ Corresponding data format: :ref:`Fixed Slit Data <data-fss>`
 
 .. _nirspec-ifu:
 
-Interferometer Field Unit
--------------------------
+Integral Field Unit
+-------------------
 Corresponding data format: :ref:`IFU Data <data-ifu>`
 
 

@@ -26,6 +26,9 @@ Corresponding data format: :ref:`Fixed Slit Data <data-fss>`
 Slitless
 ^^^^^^^^
 
+There are two modes the slitless MIRI can run in:  Standard and Time Series.  They have different data
+formats and are described differently.
+
 .. _miri-lrs-slitless-standard:
 
 Standard
