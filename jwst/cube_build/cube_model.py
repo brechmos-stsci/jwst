@@ -107,13 +107,19 @@ def UpdateIFUCube(self, Cube,IFUCube, spaxel):
     #pull out data into array
 
 
-    icube = 0
-    for z in range(Cube.naxis3):
-        for y in range(Cube.naxis2):
-            for x in range(Cube.naxis1):
-                IFUCube.data[z, y, x] = spaxel[icube].flux
-                IFUCube.weightmap[z, y, x] = len(spaxel[icube].ipointcloud)
-                icube = icube + 1
+    temp_flux = np.array([s.flux for s in spaxel])  # if you need to reverse use [::-1]
+    temp_lengths = np.array([len(s.ipointcloud) for s in spaxel])
+
+    IFUCube.data = temp_flux
+    IFUCube.weightmap = temp_lengths
+
+    # icube = 0
+    # for z in range(Cube.naxis3):
+    #     for y in range(Cube.naxis2):
+    #         for x in range(Cube.naxis1):
+    #             IFUCube.data[z, y, x] = spaxel[icube].flux
+    #             IFUCube.weightmap[z, y, x] = len(spaxel[icube].ipointcloud)
+    #             icube = icube + 1
 
 
 
