@@ -312,85 +312,54 @@ def FindROI(self, Cube, spaxel, PointCloud):
         xi = Cube.xcoord[indexx]   # Cube values for xi vector axis 
         eta = Cube.ycoord[indexy]  # Cube values for eta vector axis
 
-#________________________________________________________________________________
-# loop over the points in the ROI 
-        iz = 0
-        for zz in indexz[0]:
-            istart = zz * nplane
-            iy = 0
-            for yy in indexy[0]:
-                ix = 0
-                for xx in indexx[0]:
-#________________________________________________________________________________
-# NIRSPEC instrument
-                    # for NIRSPEC find distance between PT and Spaxel Center 
-                    # in xi,eta coordinate system
-                    if(Cube.instrument == 'NIRSPEC'):
-                        d1 = abs(xi[ix] - coord1)
-                        d2 = abs(eta[iy] - coord2)
-                        weight_distance = d1*d1 + d2*d2 
+        istart = indexz * nplane
 
-#________________________________________________________________________________
-# MIRI instrument
-                    elif(Cube.instrument == 'MIRI'):
-                        # weighting - standard - distance based on xi,eta distance
-                        if(self.weighting =='standard'):
-                            d1 = abs(xi[ix] - coord1)
-                            d2 = abs(eta[iy] - coord2)
-                            weight_distance = d1*d1 + d2*d2 
+        # CKJ - Calculate teh weight distance
+        if Cube.instrument == 'NIRSPEC':
+            d1 = xi - coord1
+            d2 = eta - coord2
+            weight_distance = d1 * d1 + d2 * d2
 
-                        # For MIRI the distance between PT and Spaxel Center is
-                        # in the alpha - beta cooridate system
-                        elif(self.weighting =='miripsf'):
+        elif Cube.instrument == 'MIRI' and self.weighting == 'standard':
+            d1 = xi - coord1
+            d2 = eta - coord2
+            weight_distance = d1 * d1 + d2 * d2
 
-                            ra_spaxel,dec_spaxel=coord.std2radec(Cube.Crval1,
-                                                             Cube.Crval2,
-                                                             xi[ix],eta[iy])
+        elif Cube.instrument == 'MIRI' and self.weighting == 'miripsf':
 
- 
-                            v2_spaxel,v3_spaxel,zl = worldtov23(ra_spaxel,dec_spaxel,zlam[iz])
-#                            print('v2      ',v2_spaxel*3600.0)
-#                            print('v3      ',v3_spaxel*3600.0)
+            ra_spaxel, dec_spaxel = coord.std2radec(Cube.Crval1, Cube.Crval2,
+                                                    xi, eta)
 
-                            alpha_spaxel,beta_spaxel,wave_spaxel = v2ab_transform(v2_spaxel,
-                                                                              v3_spaxel,
-                                                                              zlam[iz])                    
-#                            print('alpha_spaxel',alpha_spaxel)
-#                            print('alpha       ',alpha)
+            v2_spaxel, v3_spaxel, zl = worldtov23(ra_spaxel, dec_spaxel, zlam)
 
-#                            print('beta_spaxel ',beta_spaxel)
-#                            print('beta        ',beta)
-#                            sys.exit('STOP')
-                            alpha_distance = abs(alpha-alpha_spaxel)
-                            beta_distance = abs(beta-beta_spaxel)
-                            wave_distance  = abs(wave-wave_spaxel)
+            alpha_spaxel,beta_spaxel,wave_spaxel = v2ab_transform(v2_spaxel, v3_spaxel, zlam)
 
-                            xn = alpha_distance/weight_alpha
-                            yn = beta_distance/weight_beta
-                            wn = wave_distance/weight_wave
-                                                         
-                        # only included the spatial dimensions
-                            weight_distance = xn*xn + yn*yn  
+            alpha_distance = abs(alpha-alpha_spaxel)
+            beta_distance = abs(beta-beta_spaxel)
+            wave_distance  = abs(wave-wave_spaxel)
+
+            xn = alpha_distance / weight_alpha
+            yn = beta_distance / weight_beta
+            wn = wave_distance / weight_wave
+
+        # only included the spatial dimensions
+            weight_distance = xn*xn + yn*yn
                                                           
 #________________________________________________________________________________
 # We have found the weight_distance based on instrument type
 
-                    if(weight_distance < lower_limit): weight_distance = lower_limit
-                    weight_distance = 1.0 / weight_distance
+        # Fix any weight_distance that is super-small
+        inds = np.nonzero(weight_distance < lower_limit)
+        weight_distance[inds] = lower_limit
 
-                    cube_index = istart + yy * Cube.naxis1 + xx
-                    spaxel[cube_index].ipointcloud.append(ipt)
-                    spaxel[cube_index].pointcloud_weight.append(weight_distance)
+        # invert weights
+        weight_distance = 1.0 / weight_distance
 
-                    ix = ix + 1
-#                    iprint = iprint + 1
-#                    if(iprint > 80000):
-#                        iprint = 0
-#                        print('on point',ipt,nn)
-                        
-                
-                iy = iy + 1
-            iz = iz + 1
+        cube_index = istart + indexy * Cube.naxis1 + indexx
+
+        for ii, ci in enumerate(cube_index):
+            spaxel[ci].ipointcloud.append(ipt)
+            spaxel[ci].pointcloud_weight.append(weight_distance[ii])
 
 
 #_______________________________________________________________________
