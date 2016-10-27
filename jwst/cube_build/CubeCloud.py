@@ -210,6 +210,7 @@ def MakePointCloudNIRSPEC(self, input_model,
     # xpix,ypix used for testing
     cloud = np.asarray([coord1, coord2, wave, alpha, beta, flux, error, ifile, xpix, ypix])
 
+    # TODO: CKJ--- MIght want to do a transpose here so that you can do len(Cloud)
     return cloud
 #______________________________________________________________________
 
