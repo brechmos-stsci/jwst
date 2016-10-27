@@ -390,8 +390,7 @@ def DetermineCubeSize(self, Cube, MasterTable, InstrumentInfo):
 #********************************************************************************
 def MapDetectorToCube(self, this_par1, this_par2, 
                       Cube, spaxel, 
-                      PixelCloud, 
-                      MasterTable, 
+                      MasterTable,
                       InstrumentInfo,
                       IFUCube):
 #********************************************************************************
@@ -524,26 +523,20 @@ def MapDetectorToCube(self, this_par1, this_par2,
                 nslices = end_slice - start_slice + 1
                 regions = list(range(start_slice, end_slice + 1))
 
+                cloud = np.array((10, regions.size, 1))
                 for i in regions:
 
-
                     t0 = time.time()
-                    cloud = CubeCloud.MakePointCloudNIRSPEC(self,input_model,
+                    cloud[:, i] = CubeCloud.MakePointCloudNIRSPEC(self,input_model,
                                                             k,
                                                             i,
                                                             Cube,
                                                             c1_offset, c2_offset)
 
-
-                    n = PixelCloud.size
-                    if(n == 10):  # If first time
-                        PixelCloud = cloud
-                    else:    #  add information for another slice  to the  PixelCloud
-                        PixelCloud = np.hstack((PixelCloud, cloud))
-
                     t1 = time.time()
                     log.debug("Time Map one NIRSPEC slice  to Cloud = %.1f.s" % (t1 - t0,))
 
+                PixelCloud = cloud.reshape(10, regions.size*cloud.shape[2])
 #________________________________________________________________________________
 
     return PixelCloud

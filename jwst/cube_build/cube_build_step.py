@@ -267,8 +267,7 @@ class CubeBuildStep (Step):
             PixelCloud = cube_build.MapDetectorToCube(self, 
                                                       this_par1, this_par2, 
                                                       Cube, spaxel, 
-                                                      PixelCloud,
-                                                      MasterTable, 
+                                                      MasterTable,
                                                       InstrumentInfo,
                                                       IFUCube)
 
