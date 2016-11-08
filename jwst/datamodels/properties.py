@@ -17,7 +17,7 @@ from asdf import schema
 from asdf import yamlutil
 from asdf.tags.core import ndarray
 from asdf import tagged
-
+from dateutil.parser import parse as dateparse
 from . import util
 
 
@@ -199,7 +199,15 @@ class ObjectNode(Node):
             schema = _get_schema_for_property(self._schema, attr)
             if val is None:
                 val = _make_default(attr, schema, self._ctx)
+
             val = _cast(val, schema)
+            try:
+                # If a date, then check to make sure it is valid.
+                if attr == 'date' and type(val) == type('string'):
+                    _ = dateparse(val)
+            except ValueError as ve:
+                raise jsonschema.ValidationError('Date not formatted correctly')
+
             old_val = self._instance.get(attr, None)
             self._instance[attr] = val
             try:
