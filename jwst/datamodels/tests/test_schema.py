@@ -59,7 +59,7 @@ def test_get_na_ra():
             # But this should raise a ValueError
             dm.meta.target.ra = "FOO"
 
-'''
+
 def test_date():
     with pytest.raises(jsonschema.ValidationError):
         with ImageModel((50, 50)) as dm:
@@ -70,8 +70,8 @@ def test_date2():
     from astropy import time
 
     with ImageModel((50, 50)) as dm:
-        assert isinstance(dm.meta.date, (time.Time, datetime.datetime))
-'''
+        assert isinstance(dm.meta.date, (str))
+
 
 transformation_schema = {
     "allOf": [
