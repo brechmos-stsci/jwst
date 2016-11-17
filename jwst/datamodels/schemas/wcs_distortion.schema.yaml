@@ -5,7 +5,7 @@ properties:
     type: object
     properties:
       reffile:
-        title: Information about the WCS reference file
+        title: Distortion model
         type: object
         properties:
           model:
