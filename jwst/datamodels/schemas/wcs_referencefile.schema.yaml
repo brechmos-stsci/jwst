@@ -1,0 +1,50 @@
+type: object
+properties:
+  meta:
+    type: object
+    properties:
+      reffile:
+        title: Information about the WCS reference file
+        type: object
+        properties:
+          author:
+            title: Author of the reference file
+            type: string
+            fits_keyword: AUTHOR
+          description:
+            title: Description of the reference file
+            type: string
+            fits_keyword: DESCRIPTION
+          exp_type:
+            title: Exposure type
+            type: string
+            fits_keyword: EXP_TYPE
+          filename:
+            title: Filename
+            type: string
+            fits_keyword: FILENAME
+          instrument:
+            title: The related instrument
+            type: string
+            fits_keyword: INSTRUMENT
+          pedigree:
+            title: The related instrument
+            type: string
+            fits_keyword: PEDIGREE
+          reftype:
+            title: The related instrument
+            type: string
+            fits_keyword: REFTYPE
+          telescope:
+            title: The telescope
+            type: string
+            fits_keyword: TELESCOPE
+          title:
+            title: Title
+            type: string
+            fits_keyword: TITLE
+          useafter:
+            title: Use after date of the reference file
+            type: string
+            fits_keyword: USEAFTER
+$schema: http://stsci.edu/schemas/fits-schema/fits-schema

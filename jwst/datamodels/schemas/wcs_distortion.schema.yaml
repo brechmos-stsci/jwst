@@ -1,0 +1,15 @@
+type: object
+$ref: wcs_referencefile.schema.yaml
+properties:
+  meta:
+    type: object
+    properties:
+      reffile:
+        title: Information about the WCS reference file
+        type: object
+        properties:
+          model:
+            title: Author of the reference file
+            type: string
+            fits_keyword: MODEL
+$schema: http://stsci.edu/schemas/fits-schema/fits-schema

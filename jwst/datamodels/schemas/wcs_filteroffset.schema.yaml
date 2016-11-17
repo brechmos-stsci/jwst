@@ -1,0 +1,19 @@
+type: object
+$ref: wcs_referencefile.schema.yaml
+properties:
+  meta:
+    type: object
+    properties:
+      reffile:
+        title: Filter offset information
+        type: object
+        properties:
+          row_offset:
+            title: Row offset
+            type: float
+            fits_keyword: ROW_OFFSET
+          row_offset:
+            title: Column offset
+            type: float
+            fits_keyword: COL_OFFSET
+$schema: http://stsci.edu/schemas/fits-schema/fits-schema
